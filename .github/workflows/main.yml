@@ -1,0 +1,25 @@
+name: deploy
+on: [push]
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+        - name: install python
+          uses: actions/setup-python@v4
+          with:
+            python-version: '3.8' 
+
+        
+        - name: recuperation du repo
+          uses: actions/checkout@v4
+
+        - name: install dependances
+          run: pip install --quiet --upgrade --requirement requirements.txt
+
+        - name: run flake8 and pylint
+          run: |
+            flake8 --ignore=E501,E231 *.py
+            pylint --errors-only --disable=C0301 --disable=C0326 *.py
+        
+        - name: run unittests
+          run: python -m unittest --verbose --failfast
