@@ -51,7 +51,7 @@ jobs:
             uses: docker/build-push-action@v5  # Utilise l'action de build et push Docker
             with:  # Avec ces paramètres
               push: true  # Pousse l'image
-              tags: flask-docker:${{ steps.date.outputs.date }}  # Tags pour l'image
+              tags: docker.io/${{ vars.DOCKERHUB_USERNAME }}/flask-docker:${{ steps.date.outputs.date }}
               context: .  # Contexte pour la construction Docker
               cache-from: type=gha  # Utilise le cache GitHub Actions
               cache-to: type=gha,mode=max  # Enregistre le cache pour les utilisations future
