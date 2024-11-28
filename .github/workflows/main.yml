@@ -61,7 +61,7 @@ jobs:
               tags: flask-docker:${{ steps.date.outputs.date }}  # Tags pour l'image
               context: .  # Contexte pour la construction Docker
               cache-from: type=gha  # Utilise le cache GitHub Actions
-              cache-to: type=gha,mode=max  # Enregistre le cache pour les utilisations futures
+              cache-to: type=gha,mode=max  # Enregistre le cache pour les utilisations future
   
 
         
